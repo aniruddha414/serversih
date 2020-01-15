@@ -14,6 +14,7 @@ let collectionConfig = require('./config/collectionConfig');
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let loginRouter = require('./routes/login');
+let formRouter =  require('./routes/form')
 
 let app = express();
 let db = {};
@@ -36,6 +37,7 @@ app.use(session({
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
+app.use('/form',formRouter)
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
 	next(createError(404));
@@ -74,6 +76,7 @@ mongo.connect(dbConfig.URI, {
 		let Collections = collectionConfig.Collections;
 		Collections.initCollections(db);
 		loginRouter.getCollectionNames(collectionConfig.collectionNames);
+		formRouter.getCollectionNames(collectionConfig.collectionNames);
 	}
 });
 
