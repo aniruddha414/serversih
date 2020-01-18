@@ -4,6 +4,7 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let mongo = require('mongodb').MongoClient;
+let pdf = require('express-pdf');
 let session = require('express-session');
 // firebase
 // Configs
@@ -21,6 +22,10 @@ let db = {};
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+
+app.use(pdf);
+// app.use(express.static(path.join(__dirname, "public")));
 
 app.use(logger('dev'));
 app.use(express.json());

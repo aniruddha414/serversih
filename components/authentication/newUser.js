@@ -1,8 +1,15 @@
-let registerNewUser = function (message) {
-	// body...
-	console.log('Sign Up For for new User ' + message);
-	//  write main logical function here
-	console.log('Write Logic here in components');
+exports.newUser = function (collectionNames,req,res) {
+    let details = req.body;
+    let UserDetails = collectionNames.UserDetails;
+	
+	console.log('Storing new user');
+	
+    UserDetails.insertOne(details,function (err,result) {
+        if (err) {
+            console.log('Error in inserting into db');
+            throw err;
+        }
+        console.log('New user Stored Successfully : ' + result);
+        res.send('New User Stored');
+    });
 };
-
-module.exports = registerNewUser;
