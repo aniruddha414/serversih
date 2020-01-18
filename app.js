@@ -15,7 +15,8 @@ let collectionConfig = require('./config/collectionConfig');
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let loginRouter = require('./routes/login');
-let formRouter =  require('./routes/form')
+let formRouter =  require('./routes/form');
+let notifyRouter = require('./routes/notify');
 
 let app = express();
 let db = {};
@@ -42,7 +43,8 @@ app.use(session({
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
-app.use('/form',formRouter)
+app.use('/form',formRouter);
+app.use('/notify',notifyRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
 	next(createError(404));
