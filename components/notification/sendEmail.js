@@ -10,14 +10,14 @@ exports.sendEmail = function (nodemailer,req,res) {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'sih2020viit@gmail.com',
-          pass: 'SIH@2020'
+          user: '',
+          pass: ''
         }
       });
       
     
     let mailOptions = {
-        from: 'sih2020viit@gmail.com',
+        from: '',
         to: email,
         subject: subject,
         text: content
